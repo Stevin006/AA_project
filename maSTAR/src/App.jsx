@@ -43,7 +43,7 @@ function App() {
 
   const handleStart = async () => {
     setLoading(true);
-    const data = await startAssistant("User", "Name", "Done", "120912i3");
+    const data = await startAssistant("User", "Name", "Done", 12398123);
     setCallId(data.id);
   };
 
@@ -56,7 +56,23 @@ function App() {
       if (result) setCallResult(result);
       setLoadingResult(false);
     })();
+
+    getCallDetails()
   };
+
+  const getCallDetails = (interval = 3000) => {
+    setLoadingResult(true);
+    fetch("/call-details?call_id=" + callId).then((response) => response.json()).then((data) => {
+      if(data.analysis && data.summary){
+        console.log(data)
+        setCallResult(data)
+        setLoadingResult(false)
+      }else{
+        setTimeout(() => getCallDetails(interval), interval);
+      }
+    }).catch((error) => alert(error));
+
+  }
 
   // Safe polling helper: abortable, capped attempts, and interval wait.
   const pollCallDetails = async (
@@ -109,13 +125,11 @@ function App() {
           )}
         </>
       )}
-      {loadingResult && <p>Loading call details... please wait</p>}
-      {!loadingResult && callResult && (
-        <div className="call-result">
-          <p>Qualified: {callResult.analysis.structuredData.is_qualified.toString()}</p>
-          <p>{callResult.summary}</p>
-        </div>
-      )}
+      {loadingResult && <p>Loading call details... please Wait</p>}
+      {!loadingResult && callResult && <div className="call-result">
+        <p>Qualified: {callResult.analysis.structuredData.Task_Score}</p>
+        <p>{callResult.summary}</p>
+        </div>}
       {(loading || loadingResult) && <div className="loading"></div>}
       {started && (
         <ActiveCallDetails

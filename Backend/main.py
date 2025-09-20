@@ -22,7 +22,7 @@ def fetch_call_details(call_id):
     return response.json()
 
 
-@app.route("./call-details", methods=["GET"])
+@app.route("/call-details", methods=["GET"])
 def get_call_details():
     call_id = request.args.get("call_id")
     if not call_id:
