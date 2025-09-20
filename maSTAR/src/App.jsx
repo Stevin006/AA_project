@@ -1,9 +1,11 @@
-import { useState } from 'react'
-
+import { useState, useEffect} from 'react'
+import { vapi, startAssistant, stopAssistant } from './ai'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    startAssistant()
+  },[])
 
   return (
     <></>
