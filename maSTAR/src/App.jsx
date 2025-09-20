@@ -43,7 +43,7 @@ function App() {
 
   const handleStart = async () => {
     setLoading(true);
-    const data = await startAssistant(firstName, lastName, email, phoneNumber);
+    const data = await startAssistant("User", "Name", "Done", "120912i3");
     setCallId(data.id);
   };
 
@@ -93,45 +93,15 @@ function App() {
   };
 
   const showForm = !loading && !started && !loadingResult && !callResult;
-  const allFieldsFilled = firstName && lastName && email && phoneNumber;
 
   return (
     <div className="app-container">
       {showForm && (
         <>
-          <h1>Contact Details (Required)</h1>
-          <input
-            type="text"
-            placeholder="First Name"
-            value={firstName}
-            className="input-field"
-            onChange={handleInputChange(setFirstName)}
-          />
-          <input
-            type="text"
-            placeholder="Last Name"
-            value={lastName}
-            className="input-field"
-            onChange={handleInputChange(setLastName)}
-          />
-          <input
-            type="email"
-            placeholder="Email address"
-            value={email}
-            className="input-field"
-            onChange={handleInputChange(setEmail)}
-          />
-          <input
-            type="tel"
-            placeholder="Phone number"
-            value={phoneNumber}
-            className="input-field"
-            onChange={handleInputChange(setPhoneNumber)}
-          />
           {!started && (
             <button
               onClick={handleStart}
-              disabled={!allFieldsFilled}
+              disabled={false}
               className="button"
             >
               Start Application Call
