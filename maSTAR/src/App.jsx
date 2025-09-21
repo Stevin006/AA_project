@@ -53,7 +53,7 @@ function App() {
 
   const handleStart = async () => {
     setLoading(true);
-    setShowImages(false); 
+    setShowImages(false);
     const data = await startAssistant("User", "Name", "Done", 12398123);
     setCallId(data.id);
   };
@@ -74,11 +74,11 @@ function App() {
   const getCallDetails = (interval = 3000) => {
     setLoadingResult(true);
     fetch("/call-details?call_id=" + callId).then((response) => response.json()).then((data) => {
-      if(data.analysis && data.summary){
+      if (data.analysis && data.summary) {
         console.log(data)
         setCallResult(data)
         setLoadingResult(false)
-      }else{
+      } else {
         setTimeout(() => getCallDetails(interval), interval);
       }
     }).catch((error) => alert(error));
@@ -119,46 +119,62 @@ function App() {
 
   return (
     <>
-    <img src={mascotImg} alt="mascot" className={`mascot-image ${!showImages ? 'growing' : ''}`} />
-    <img src={title} alt="Title" className={titleImageClassName} />
-    <img src={subTitle} alt="subTitle" className={subtitleImageClassName} />
-    <img src={MWL} alt="MWL" className="MWL-image" />
+      <img src={mascotImg} alt="mascot" className={`mascot-image ${!showImages ? 'growing' : ''}`} />
+      <img src={title} alt="Title" className={titleImageClassName} />
+      <img src={subTitle} alt="subTitle" className={subtitleImageClassName} />
+      <img src={MWL} alt="MWL" className="MWL-image" />
 
 
-    <div className="app-container">
-      {showForm && (
-        <>          
+      <div className="app-container">
+        {showForm && (
+          <>
 
-          {!started && (
-            <button
-              onClick={handleStart}
-              disabled={false}
-              className="button"
-            >
-              Start your interview
-            </button>
-          )}
-        </>
-      )}
-      {loadingResult && <p>Loading call details... please Wait</p>}
-      {!loadingResult && callResult && <div className="call-result">
-        <p className="Situation">Situation Score: {callResult.analysis.structuredData.Situation_Score}</p>
-        <p className="Task">Task Score: {callResult.analysis.structuredData.Task_Score}</p>
-        <p className="Action">Action Score: {callResult.analysis.structuredData.Action_Score}</p>
-        <p className="Score">Result Score: {callResult.analysis.structuredData.Result_Score}</p>
-        {/*<p>{callResult.summary}</p> */}
+            {!started && (
+              <button
+                onClick={handleStart}
+                disabled={false}
+                className="button"
+              >
+                Start your interview
+              </button>
+            )}
+          </>
+        )}
+        {loadingResult && <p className="LOADD"></p>}
+        {!loadingResult && callResult && <div className="call-result">
+          <div className="score-list">
+            <div className="score-item">
+              <p>Situation Score:</p>
+              <span className="score-value">{callResult.analysis.structuredData.Situation_Score} /10</span>
+            </div>
+            <div className="score-item">
+              <p>Task Score:</p>
+              <span className="score-value">{callResult.analysis.structuredData.Task_Score} /10</span>
+            </div>
+            <div className="score-item">
+              <p>Action Score:</p>
+              <span className="score-value">{callResult.analysis.structuredData.Action_Score} /10</span>
+            </div>
+            <div className="score-item">
+              <p>Result Score:</p>
+              <span className="score-value">{callResult.analysis.structuredData.Result_Score} /10</span>
+            </div>
+          </div>
+          <div className="score-Result">
+            <p> {callResult.summary}</p>
+          </div>
         </div>}
-      {(loading || loadingResult) && <div className="loading"></div>}
-      {started && (
-        <ActiveCallDetails
-          assistantIsSpeaking={assistantIsSpeaking}
-          volumeLevel={volumeLevel}
-          endCallCallback={handleStop}
-        />
-      )}
-    </div>
-  );
-  </>
+        {(loading || loadingResult) && <div className="loading"></div>}
+        {started && (
+          <ActiveCallDetails
+            assistantIsSpeaking={assistantIsSpeaking}
+            volumeLevel={volumeLevel}
+            endCallCallback={handleStop}
+          />
+        )}
+      </div>
+      );
+    </>
   )
 }
 

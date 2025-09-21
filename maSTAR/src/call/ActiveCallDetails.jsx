@@ -13,7 +13,7 @@ const ActiveCallDetails = ({
         <VolumeLevel volume={volumeLevel} />
       </div>
       <div className="end-call-button">
-        <button onClick={endCallCallback}>View Results</button>
+        <button onClick={endCallCallback} >View Results</button>
       </div>
     </div>
   );
