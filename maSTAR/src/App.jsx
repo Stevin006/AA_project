@@ -117,7 +117,7 @@ function App() {
 
   return (
     <>
-    <img src={mascotImg} alt="mascot" className="mascot-image" />
+    <img src={mascotImg} alt="mascot" className={`mascot-image ${!showImages ? 'growing' : ''}`} />
     <img src={title} alt="Title" className={titleImageClassName} />
     <img src={subTitle} alt="subTitle" className={subtitleImageClassName} />
     <img src={MWL} alt="MWL" className="MWL-image" />

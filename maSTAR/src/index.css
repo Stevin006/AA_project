@@ -246,10 +246,15 @@ button:focus-visible {
   left: 50%;
   top: 5%; 
   transform: translateX(-50%) translateY(-30%); 
+  transition: transform 1s ease-in-out;
   width: 400px;
   height: auto;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.6));
   opacity: 0.98;
+}
+
+.mascot-image.growing {
+  transform: translateX(-50%) translateY(-10%) scale(1.3);
 }
 
 
