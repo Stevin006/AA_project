@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -12,6 +14,31 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.title-image{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -120%);
+}
+
+.subtitle-image{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+.MWL-image{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 1650%);
+  
+}
+
+
 
 a {
   font-weight: 500;
@@ -29,7 +56,8 @@ body {
   align-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a1a, #333);
+  background: radial-gradient(circle at 50% 40%,#00192b 0%,   #00192b 35%,   #00111e 70%,   #000c11 100%); 
+  background-attachment: fixed;
   color: #ffffff;
   font-family: 'Inter', sans-serif;
   overflow: hidden;
@@ -42,7 +70,7 @@ h1 {
 
 .heading {
   font-size: 36px;
-  color: #ff5722;
+  color: #ffffff;
   margin-bottom: 30px;
   text-align: center;
   font-weight: bold;
@@ -50,19 +78,19 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 50px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
+  font-size: 100%;
   font-weight: 500;
-  font-family: inherit;
+  font-family: 'Montserrat', sans-serif;
   background-color: #ff5722;
   color: #ffffff;
   cursor: pointer;
   transition: background-color 0.25s;
 }
 button:hover {
-  background-color: #e64a19;
+  background-color: #ffffff;
 }
 button:focus,
 button:focus-visible {
@@ -76,7 +104,8 @@ button:focus-visible {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #1e1e1e;
+  background-color: transparent;
+  position: relative; 
   color: #ffffff;
   overflow: hidden;
 }
@@ -102,12 +131,12 @@ button:focus-visible {
 }
 
 .button {
-  margin-top: 20px;
-  padding: 15px 30px;
-  background-color: #ff5722;
-  color: #ffffff;
+  margin-top: 20%;
+  padding: 25px 90px;
+  background-color: #ffffff;
+  color: #000000;
   border: none;
-  border-radius: 25px;
+  border-radius: 50px;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
@@ -116,17 +145,17 @@ button:focus-visible {
 }
 
 .button:hover {
-  background-color: #e64a19;
+  background-color: #5a5a5a;
   transform: translateY(-2px);
 }
 
 .button:disabled {
-  background-color: #cccccc;
+  background-color: #353535;
   cursor: not-allowed;
 }
 
 .button:hover:not(:disabled) {
-  background-color: #e64a19;
+  background-color: #484848;
 }
 
 .loading {
@@ -143,7 +172,7 @@ button:focus-visible {
   height: 40px;
   border: 4px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
-  border-top-color: #ff5722;
+  border-top-color: #ffffff;
   animation: spin 1s ease-in-out infinite;
 }
 
@@ -186,7 +215,7 @@ button:focus-visible {
 }
 
 .volume-bar.active {
-  background-color: #ff5722;
+  background-color: #22ff34;
 }
 
 .volume-value {
@@ -205,14 +234,26 @@ button:focus-visible {
   margin-top: 20px;
 }
 
+.mascot-image {
+  position: absolute;
+  left: 50%;
+  top: 5%; 
+  transform: translateX(-50%) translateY(-30%); 
+  width: 400px;
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.6));
+  opacity: 0.98;
+}
+
+
 .end-call-button {
   margin-top: 20px;
 }
 
 .end-call-button button {
   padding: 10px 20px;
-  background-color: #ff5722;
-  color: #ffffff;
+  background-color: #fae1e1;
+  color: #000000;
   border: none;
   border-radius: 25px;
   font-size: 16px;
@@ -222,7 +263,7 @@ button:focus-visible {
 }
 
 .end-call-button button:hover {
-  background-color: #e64a19;
+  background-color: #ff9595;
 }
 
 .assistant-speech-indicator {

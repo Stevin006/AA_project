@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { vapi, startAssistant, stopAssistant } from "./ai";
 import ActiveCallDetails from "./call/ActiveCallDetails";
+import mascotImg from "./assets/ugly1.png";
+import title from "./assets/Pt.png";
+import subTitle from "./assets/subTitle.png";
+import MWL from "./assets/MWL.png";
+
+
 
 function App() {
   const [started, setStarted] = useState(false);
@@ -49,7 +55,6 @@ function App() {
 
   const handleStop = () => {
     stopAssistant();
-    // fetch final call details with safe polling
     const controller = new AbortController();
     (async () => {
       const result = await pollCallDetails(callId, { signal: controller.signal });
@@ -74,7 +79,6 @@ function App() {
 
   }
 
-  // Safe polling helper: abortable, capped attempts, and interval wait.
   const pollCallDetails = async (
     callIdToPoll,
     { interval = 3000, maxAttempts = 20, signal } = {}
@@ -93,16 +97,13 @@ function App() {
           return data;
         }
       } catch (err) {
-        // network or abort error -- log and stop polling on non-recoverable errors
         if (err.name === 'AbortError') {
           console.log('poll aborted');
           break;
         }
         console.error('polling error', err);
-        // for other errors, break to avoid tight-loop retries
         break;
       }
-      // wait before retrying
       await new Promise((r) => setTimeout(r, interval));
     }
     return null;
@@ -111,16 +112,24 @@ function App() {
   const showForm = !loading && !started && !loadingResult && !callResult;
 
   return (
+    <>
+    <img src={mascotImg} alt="mascot" className="mascot-image" />
+    <img src={title} alt="Title" className="title-image" />
+    <img src={subTitle} alt="subTitle" className="subtitle-image" />
+    <img src={MWL} alt="MWL" className="MWL-image" />
+
+
     <div className="app-container">
       {showForm && (
-        <>
+        <>          
+
           {!started && (
             <button
               onClick={handleStart}
               disabled={false}
               className="button"
             >
-              Start Application Call
+              Start your interview
             </button>
           )}
         </>
@@ -140,6 +149,8 @@ function App() {
       )}
     </div>
   );
+  </>
+  )
 }
 
 export default App;
