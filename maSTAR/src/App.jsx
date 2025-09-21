@@ -17,6 +17,7 @@ function App() {
   const [callResult, setCallResult] = useState(null);
   const [loadingResult, setLoadingResult] = useState(false);
   const [showImages, setShowImages] = useState(true);
+  const [growCham, startGrowCham] = useState(false)
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -59,6 +60,7 @@ function App() {
 
   const handleStop = () => {
     stopAssistant();
+    startGrowCham(true);
     const controller = new AbortController();
     (async () => {
       const result = await pollCallDetails(callId, { signal: controller.signal });
@@ -140,8 +142,11 @@ function App() {
       )}
       {loadingResult && <p>Loading call details... please Wait</p>}
       {!loadingResult && callResult && <div className="call-result">
-        <p>Qualified: {callResult.analysis.structuredData.Task_Score}</p>
-        <p>{callResult.summary}</p>
+        <p className="Situation">Situation Score: {callResult.analysis.structuredData.Situation_Score}</p>
+        <p className="Task">Task Score: {callResult.analysis.structuredData.Task_Score}</p>
+        <p className="Action">Action Score: {callResult.analysis.structuredData.Action_Score}</p>
+        <p className="Score">Result Score: {callResult.analysis.structuredData.Result_Score}</p>
+        {/*<p>{callResult.summary}</p> */}
         </div>}
       {(loading || loadingResult) && <div className="loading"></div>}
       {started && (

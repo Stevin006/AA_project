@@ -41,8 +41,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 1650%);
-  
+  transform: translate(-50%, 1700%);
 }
 
 
@@ -169,7 +168,7 @@ button:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 30000px;
 }
 
 .loading:before {
@@ -177,7 +176,7 @@ button:focus-visible {
   display: inline-block;
   width: 40px;
   height: 40px;
-  border: 4px solid rgba(255, 255, 255, 0.3);
+  border: 4px solid rgba(255, 255, 255, 0);
   border-radius: 50%;
   border-top-color: #ffffff;
   animation: spin 1s ease-in-out infinite;
@@ -185,7 +184,7 @@ button:focus-visible {
 
 @keyframes spin {
   to {
-    transform: rotate(360deg);
+    transform: translateY(100000%) ;
   }
 }
 
@@ -194,10 +193,10 @@ button:focus-visible {
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-color: rgba(44, 44, 44, 0.8);
+  background-color: rgba(0, 6, 21, 0);
   border-radius: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  margin-top: 10px;
+  margin-top: 40px;
 }
 
 .volume-label {
@@ -235,10 +234,11 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background-color: rgba(44, 44, 44, 0.8);
+  background-color: rgba(255, 0, 0, 0);
   border-radius: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(255, 0, 0, 0);
   margin-top: 20px;
+  transform: translateY(75%);
 }
 
 .mascot-image {
@@ -259,7 +259,7 @@ button:focus-visible {
 
 
 .end-call-button {
-  margin-top: 20px;
+  margin-top: 70px;
 }
 
 .end-call-button button {
@@ -281,45 +281,54 @@ button:focus-visible {
 .assistant-speech-indicator {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
   padding: 10px;
-  background-color: rgba(44, 44, 44, 0.8);
+  background-color: rgb(230, 68, 68);
   border-radius: 25px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgb(196, 14, 14);
   transition: background-color 0.3s ease;
 }
 
 .speech-indicator {
   width: 25px;
   height: 25px;
-  margin-right: 15px;
+  margin-right: 50px;
   border-radius: 50%;
-  background-color: #f03e3e;
+  justify-content: center;
+  text-align: center;
+  color: #fc4545;
+  position: absolute;
+  transform: translateX(375%) translateY(-50%);
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .speaking {
-  background-color: #3ef07c;
-  transform: scale(1.2);
+  color: #4bf559;
+  transform: scale(1.2) translateX(300%) translateY(-10%);;
+  text-align: center;
 }
 
 .speech-status {
   color: #ffffff;
   font-weight: bold;
   font-size: 18px;
+  text-align: center;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .call-result {
-  background-color: rgba(44, 44, 44, 0.8);
+  background-color: rgba(44, 44, 44, 0.002);
   border-radius: 15px;
   padding: 20px;
   margin-top: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   color: #ffffff;
   text-align: left;
-  width: 80%;
-  max-width: 500px;
+  width: 90%;
+  max-width: 100%;
+  height: 70%;
 }
 
 .call-result p {

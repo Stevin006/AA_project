@@ -5,7 +5,7 @@
 const AssistantSpeechIndicator = ({ isSpeaking = false }) => {
   return (
     <div className={`speech-indicator ${isSpeaking ? "speaking" : "idle"}`}>
-      {isSpeaking ? "Assistant speaking…" : "Idle"}
+      {isSpeaking ? "Speaking..." : "Waiting..."}
     </div>
   );
 };
