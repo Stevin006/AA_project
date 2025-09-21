@@ -15,11 +15,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.transparent {
+  opacity: 0;
+}
+
+
+
 .title-image{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -120%);
+  transition: opacity 0.5s ease-in-out;
 }
 
 .subtitle-image{
@@ -27,7 +34,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
+  transition: opacity 0.5s ease-in-out;
 }
 
 .MWL-image{

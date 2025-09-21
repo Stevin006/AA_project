@@ -16,11 +16,14 @@ function App() {
   const [callId, setCallId] = useState("");
   const [callResult, setCallResult] = useState(null);
   const [loadingResult, setLoadingResult] = useState(false);
-
+  const [showImages, setShowImages] = useState(true);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
+
+  const titleImageClassName = `title-image ${!showImages ? 'transparent' : ''}`;
+  const subtitleImageClassName = `subtitle-image ${!showImages ? 'transparent' : ''}`;
 
   useEffect(() => {
     vapi
@@ -49,6 +52,7 @@ function App() {
 
   const handleStart = async () => {
     setLoading(true);
+    setShowImages(false); 
     const data = await startAssistant("User", "Name", "Done", 12398123);
     setCallId(data.id);
   };
@@ -114,8 +118,8 @@ function App() {
   return (
     <>
     <img src={mascotImg} alt="mascot" className="mascot-image" />
-    <img src={title} alt="Title" className="title-image" />
-    <img src={subTitle} alt="subTitle" className="subtitle-image" />
+    <img src={title} alt="Title" className={titleImageClassName} />
+    <img src={subTitle} alt="subTitle" className={subtitleImageClassName} />
     <img src={MWL} alt="MWL" className="MWL-image" />
 
 
